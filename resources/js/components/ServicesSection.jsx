@@ -9,7 +9,7 @@ export default function ServicesSection() {
             <div className="flex-col mt-8 lg:mt-0 items-center flex lg:flex-row pb-24 justify-center gap-32">
                 <ServiceCard name={'Supacon'} logo={'/icon/supaconIcon.svg'} preview={'Supacon is a Japanese-made condenser sold as a unit to revitalize large-scale (building/industrial) outdoor AC units.'} />
                 <ServiceCard name={'Electrical Engineering'} logo={'/icon/electricalIcon.svg'} preview={'Our team of experienced engineers can handle all your electrical needs, from lighting and power to security and data systems.'} />
-                <ServiceCard name={'Trading'} logo={'/icon/tradingIcon.svg'} preview={'We can help you to source any: Electrical, Mechanical, & Industrial Products that you need from local & imported items.'} />
+                <ServiceCard name={'Supply'} logo={'/icon/tradingIcon.svg'} preview={'We can help you to source any: Electrical, Mechanical, & IT Communication that you need from local & imported items.'} />
             </div>
         </div>
     )
