@@ -8,7 +8,7 @@ export default function ContactSection() {
                 <p className="font-medium italic mt-4">Need Assistance? Contact Our Team</p>
                 <p className='mt-10  max-w-lg'>Contact our seasoned team directly for service, pricing, or general queries. Our experts ensure professional and knowledgeable assistance. Start a conversation with us today to discover how we can cater to your needs.</p>
                 <a href="#services" className="mt-11 px-9 w-fit text-sm py-3 font-semibold border rounded-3xl border-white hover:bg-white hover:text-darkerBlue transition-all ease">
-                    <p>OUR SERVICES</p>
+                    <p>CONTACT US</p>
                 </a>
             </div>
 
