@@ -28,7 +28,7 @@ export default function Navbar() {
                 <h1 className="text-xl font-semibold ms-4">Super Tasko Aria</h1>
             </a>
             <ul className="gap-8 px-3 hidden md:flex">
-                <a href="/articles" className="hover:text-darkerBlue"><li>Article</li></a>
+                <a href="/article" className="hover:text-darkerBlue"><li>Article</li></a>
             </ul>
         </nav>
     )

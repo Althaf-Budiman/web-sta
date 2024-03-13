@@ -11,4 +11,9 @@ class ArticleController extends Controller
     {
         return Inertia::render('Article');
     }
+
+    public function create()
+    {
+        return Inertia::render('CreateArticle');
+    }
 }
