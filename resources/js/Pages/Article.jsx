@@ -3,12 +3,12 @@ import Navbar from "../components/Navbar";
 import HeaderSectionArticlePage from "../components/HeaderSectionArticlePage";
 import ArticlesList from "../components/ArticlesList";
 
-export default function Article() {
+export default function Article({ articles }) {
     return (
         <>
             <Navbar />
             <HeaderSectionArticlePage />
-            <ArticlesList />
+            <ArticlesList articles={articles} />
         </>
     )
 }

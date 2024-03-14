@@ -14,7 +14,7 @@ export default function ContactSection() {
 
 
             <div className="mt-10 lg:mt-0 h-80 w-[80%] lg:w-[40%]">
-                <iframe className='h-full w-full' src="https://www.google.com/maps/embed/v1/place?q=Jl.+K.H.M.+Yusuf+Raya+No.89,+Mekar+Jaya,+Kec.+Sukmajaya,+Kota+Depok,+Jawa+Barat+16411,+Indonesia&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8">
+                <iframe className='h-full w-full rounded-lg' src="https://www.google.com/maps/embed/v1/place?q=Jl.+K.H.M.+Yusuf+Raya+No.89,+Mekar+Jaya,+Kec.+Sukmajaya,+Kota+Depok,+Jawa+Barat+16411,+Indonesia&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8">
                 </iframe>
             </div>
 

@@ -19,4 +19,6 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::get('/article', [ArticleController::class, 'article'])->name('article');
 
-Route::get('/article/create', [ArticleController::class, 'create'])->name('create_article');
+Route::get('/article/create', [ArticleController::class, 'create'])->name('view_create_article');
+
+Route::post('/article', [ArticleController::class, 'store'])->name('create_article');
