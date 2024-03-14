@@ -8,7 +8,7 @@ use Inertia\Inertia;
 
 class ArticleController extends Controller
 {
-    public function article()
+    public function index()
     {
         $articles = Article::all();
         return Inertia::render('Article', [

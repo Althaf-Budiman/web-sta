@@ -17,8 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
-Route::get('/article', [ArticleController::class, 'article'])->name('article');
+Route::get('/article', [ArticleController::class, 'index'])->name('articles');
 
-Route::get('/article/create', [ArticleController::class, 'create'])->name('view_create_article');
+Route::get('/article/create', [ArticleController::class, 'create'])->name('articles.create');
 
-Route::post('/article', [ArticleController::class, 'store'])->name('create_article');
+Route::post('/article', [ArticleController::class, 'store'])->name('articles.store');
+
+Route::get('/article/{article}', [ArticleController::class, 'show'])->name('articles.show');
