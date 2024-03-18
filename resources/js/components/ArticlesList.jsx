@@ -13,18 +13,18 @@ function ArticlesListContainer({ articles }) {
     return (
         <div className="mt-6 flex mx-16 gap-10 justify-center flex-wrap">
             {articles.map(article => (
-                <ArticleItem title={article.title} />
+                <ArticleItem article={article} />
             ))}
         </div>
     )
 }
 
-function ArticleItem({ title }) {
+function ArticleItem({ article }) {
     return (
-        <a className="rounded-xl hover:bg-gray-300 transition border flex flex-col border-gray-300 p-4 w-72 h-60">
+        <a href={`/article/${article.id}`} className="rounded-xl hover:bg-gray-300 transition border flex flex-col border-gray-300 p-4 w-72 h-60">
             <div className="w-full h-32 border border-black rounded-xl">
             </div>
-            <h3 className="mt-4 font-semibold h-[48px]">{title}</h3>
+            <h3 className="mt-4 font-semibold h-[48px]">{article.title}</h3>
             <p className="text-sm">4 Maret 2024</p>
         </a>
     )

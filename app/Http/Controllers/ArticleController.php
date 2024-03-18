@@ -16,6 +16,12 @@ class ArticleController extends Controller
         ]);
     }
 
+    public function show(Article $article) {
+        return Inertia::render('ShowArticle', [
+            'article' => $article
+        ]);
+    }
+
     public function create()
     {
         return Inertia::render('CreateArticle');

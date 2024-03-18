@@ -17,3 +17,32 @@ b {
 .card-shadow {
     box-shadow: 1px 8px 24.9px 0px rgba(0, 0, 0, 0.25);
 }
+
+.article h1 {
+    font-size: 2em; /* Atur ukuran font untuk h1 */
+    font-weight: 600; /* Atur bobot font untuk h1 */
+}
+
+.article h2 {
+    font-size: 1.5em; /* Atur ukuran font untuk h2 */
+    font-weight: 600; /* Atur bobot font untuk h2 */
+}
+
+.article h3 { /* Atur ukuran font untuk h3 */
+    font-size: 1.17em;
+    font-weight: 600; /* Atur bobot font untuk h3 */
+}
+
+.article h4 {
+    font-weight: 600; /* Atur bobot font untuk h4 */
+}
+
+.article h5 {
+    font-size: 0.83em; /* Atur ukuran font untuk h5 */
+    font-weight: 600; /* Atur bobot font untuk h5 */
+}
+
+.article h6 {
+    font-size: 0.67; /* Atur ukuran font untuk h6 */
+    font-weight: 600; /* Atur bobot font untuk h6 */
+}
