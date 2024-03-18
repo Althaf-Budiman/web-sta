@@ -1,4 +1,5 @@
 import React from "react";
+import { format } from "date-fns";
 
 export default function ArticlesList({ articles }) {
     return (
@@ -13,7 +14,7 @@ function ArticlesListContainer({ articles }) {
     return (
         <div className="mt-6 flex mx-16 gap-10 justify-center flex-wrap">
             {articles.map(article => (
-                <ArticleItem article={article} />
+                <ArticleItem key={article.id} article={article} />
             ))}
         </div>
     )
@@ -25,7 +26,7 @@ function ArticleItem({ article }) {
             <div className="w-full h-32 border border-black rounded-xl">
             </div>
             <h3 className="mt-4 font-semibold h-[48px]">{article.title}</h3>
-            <p className="text-sm">4 Maret 2024</p>
+            <p className="text-sm">{article.created_at ? format(new Date(article.created_at), 'dd MMMM yyyy') : 'Not Available'}</p>
         </a>
     )
 }
