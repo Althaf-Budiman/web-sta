@@ -16,7 +16,8 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function show(Article $article) {
+    public function show(Article $article)
+    {
         return Inertia::render('ShowArticle', [
             'article' => $article
         ]);
@@ -35,5 +36,6 @@ class ArticleController extends Controller
         ]);
 
         Article::create($validated);
+        return redirect('/article');
     }
 }
