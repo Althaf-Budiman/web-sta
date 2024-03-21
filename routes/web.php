@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,10 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
-Route::get('/article', [ArticleController::class, 'index'])->name('articles.index');
+Route::controller(ArticleController::class)->group(function () {
 
-Route::get('/article/create', [ArticleController::class, 'create'])->name('articles.create');
+    Route::get('/article', 'index')->name('articles.index');
+    Route::get('/article/create', 'create')->name('articles.create');
 
-Route::post('/article', [ArticleController::class, 'store'])->name('articles.store');
+    Route::get('/article/{article}', 'show')->name('articles.show');
+    Route::post('/article', 'store')->name('articles.store');
+});
 
-Route::get('/article/{article}', [ArticleController::class, 'show'])->name('articles.show');
+Route::controller(AuthenticationController::class)->group(function () {
+    Route::get('/login', 'loginView');
+    Route::post('/login', 'login');
+});
