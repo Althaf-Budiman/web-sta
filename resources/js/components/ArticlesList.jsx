@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { format } from "date-fns";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime"
+
+dayjs.extend(relativeTime)
 
 export default function ArticlesList({ articles }) {
 
@@ -33,7 +36,7 @@ function ArticleItem({ article }) {
             <div className="w-full h-32 border border-black rounded-xl">
             </div>
             <h3 className="mt-4 font-semibold h-[48px]">{article.title}</h3>
-            <p className="text-sm">{article.created_at ? format(new Date(article.created_at), 'dd MMMM yyyy') : 'Not Available'}</p>
+            <p className="text-sm">{dayjs(article.created_at).fromNow()}</p>
         </a>
     )
 }
