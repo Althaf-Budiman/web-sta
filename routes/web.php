@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\HomeController;
@@ -21,13 +22,16 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::controller(ArticleController::class)->group(function () {
 
     Route::get('/article', 'index')->name('articles.index');
-    Route::get('/article/create', 'create')->name('articles.create');
+    Route::get('/article/create', 'create')->name('articles.create')->middleware('auth');
 
     Route::get('/article/{article}', 'show')->name('articles.show');
-    Route::post('/article', 'store')->name('articles.store');
+    Route::post('/article', 'store')->name('articles.store')->middleware('auth');
 });
 
 Route::controller(AuthenticationController::class)->group(function () {
     Route::get('/login', 'loginView');
-    Route::post('/login', 'login');
+    Route::post('/login', 'login')->name('login');
+    Route::post('/logout', 'logout')->middleware('auth');
 });
+
+Route::get('/admin', [AdminController::class, 'adminView'])->middleware('auth');
