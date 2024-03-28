@@ -8,7 +8,8 @@ export default function Admin({ articles }) {
 
     const { auth } = usePage().props
 
-    function onLogoutSubmitEventHandler() {
+    function onLogoutSubmitEventHandler(e) {
+        e.preventDefault()
         Inertia.post('/logout')
     }
 

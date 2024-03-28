@@ -26,6 +26,8 @@ Route::controller(ArticleController::class)->group(function () {
 
     Route::get('/article/{article}', 'show')->name('articles.show');
     Route::post('/article', 'store')->name('articles.store')->middleware('auth');
+
+    Route::delete('/article/{article}', 'destroy')->middleware('auth');
 });
 
 Route::controller(AuthenticationController::class)->group(function () {

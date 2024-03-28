@@ -36,6 +36,11 @@ class ArticleController extends Controller
         ]);
 
         Article::create($validated);
-        return redirect('/article');
+        return redirect('/admin');
+    }
+
+    public function destroy(Article $article) {
+        $article->delete();
+        return redirect('/admin');
     }
 }
