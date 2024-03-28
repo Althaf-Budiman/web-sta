@@ -2,8 +2,9 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { usePage } from "@inertiajs/inertia-react";
 import { Inertia } from "@inertiajs/inertia";
+import ArticlesList from "../components/ArticlesList";
 
-export default function Admin() {
+export default function Admin({ articles }) {
 
     const { auth } = usePage().props
 
@@ -21,6 +22,7 @@ export default function Admin() {
                 </form>
                 <div className="h-[1px] mt-3 w-16 bg-gray-200"></div>
             </div>
+            <ArticlesList articles={articles} />
         </>
     )
 }
