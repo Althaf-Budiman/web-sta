@@ -27,6 +27,7 @@ function ArticleItem({ article, deleteArticle }) {
     const inAdminPage = url.includes('/admin');
 
     const [options, setOptions] = useState(false);
+    const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false)
 
     const handleOptionsClick = (e) => {
         e.preventDefault();
@@ -35,6 +36,21 @@ function ArticleItem({ article, deleteArticle }) {
 
     return (
         <>
+            {
+                isModalDeleteOpen &&
+                <>
+                    <div className="fixed inset-0 flex items-center justify-center z-40">
+                        <div className="p-4 rounded-lg flex flex-col bg-white text-black z-50">
+                            <h2 className="text-2xl font-semibold">Delete "{article.title}"?</h2>
+                            <div className="justify-end flex gap-3 mt-6">
+                                <button onClick={() => setIsModalDeleteOpen(!isModalDeleteOpen)} className="px-4 py-2 text-white rounded-lg bg-darkerBlue">Close</button>
+                                <button onClick={() => deleteArticle(article.id)} className="px-4 py-2 text-white rounded-lg bg-red-600">Delete</button>
+                            </div>
+                        </div>
+                        <div onClick={() => setIsModalDeleteOpen(!isModalDeleteOpen)} className="fixed inset-0 bg-black opacity-35"></div>
+                    </div>
+                </>
+            }
             <div className="relative">
                 <div className="rounded-xl transition border flex flex-col border-gray-300 p-4 w-72 h-60">
                     <div className="w-full h-32 border border-black rounded-xl"></div>
@@ -49,9 +65,9 @@ function ArticleItem({ article, deleteArticle }) {
                                     <img src="/icon/options.svg" className="w-1" />
                                 </div>
                                 {options &&
-                                    <div id="options" className="absolute right-7 bottom-0  shadow-md">
+                                    <div id="options" className="absolute right-10 bottom-0  shadow-md">
                                         <ul>
-                                            <button onClick={() => deleteArticle(article.id)} className="hover:bg-gray-200 bg-white px-4 py-3" >Delete</button>
+                                            <button onClick={() => setIsModalDeleteOpen(!isModalDeleteOpen)} className="hover:bg-gray-200 bg-white px-4 py-3" >Delete</button>
                                             <li className="hover:bg-gray-200 bg-white px-4 py-3">Edit</li>
                                         </ul>
                                     </div>
@@ -99,7 +115,7 @@ function ArticlesListHeader({ search, setSearch }) {
                 <div className="relative">
                     <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" className="px-4 py-2 bg-gray-300 rounded-full pr-10" />
                     <img src="/icon/search.svg" className="absolute right-3 top-1/2 transform -translate-y-1/2" />
-                    </div>
+                </div>
             </div>
         </div>
     )
