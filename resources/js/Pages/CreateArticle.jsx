@@ -14,7 +14,7 @@ export default function CreateArticle() {
 
     function onSubmitEventHandler(e) {
         e.preventDefault()
-        post("/article", { onSuccess: () => reset() })
+        post("/articles", { onSuccess: () => reset() })
     }
 
 

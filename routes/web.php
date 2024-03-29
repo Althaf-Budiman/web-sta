@@ -21,13 +21,16 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::controller(ArticleController::class)->group(function () {
 
-    Route::get('/article', 'index')->name('articles.index');
-    Route::get('/article/create', 'create')->name('articles.create')->middleware('auth');
+    Route::get('/articles', 'index')->name('articles.index');
+    Route::get('/articles/create', 'create')->name('articles.create')->middleware('auth');
 
-    Route::get('/article/{article}', 'show')->name('articles.show');
-    Route::post('/article', 'store')->name('articles.store')->middleware('auth');
+    Route::get('/articles/{article}', 'show')->name('articles.show');
+    Route::post('/articles', 'store')->name('articles.store')->middleware('auth');
 
-    Route::delete('/article/{article}', 'destroy')->middleware('auth');
+    Route::delete('/articles/{article}', 'destroy')->middleware('auth');
+
+    Route::get('/articles/{article}/edit', 'edit')->middleware('auth')->name('articles.edit');
+    Route::patch('/articles/{articles}/edit', 'update')->middleware('auth')->name('articles.update');
 });
 
 Route::controller(AuthenticationController::class)->group(function () {
