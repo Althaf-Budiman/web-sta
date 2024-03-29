@@ -30,7 +30,7 @@ Route::controller(ArticleController::class)->group(function () {
     Route::delete('/articles/{article}', 'destroy')->middleware('auth');
 
     Route::get('/articles/{article}/edit', 'edit')->middleware('auth')->name('articles.edit');
-    Route::patch('/articles/{articles}/edit', 'update')->middleware('auth')->name('articles.update');
+    Route::patch('/articles/{article}/edit', 'update')->middleware('auth')->name('articles.update');
 });
 
 Route::controller(AuthenticationController::class)->group(function () {

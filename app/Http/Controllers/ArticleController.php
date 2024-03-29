@@ -39,8 +39,27 @@ class ArticleController extends Controller
         return redirect('/admin');
     }
 
-    public function destroy(Article $article) {
+    public function destroy(Article $article)
+    {
         $article->delete();
+        return redirect('/admin');
+    }
+
+    public function edit(Article $article)
+    {
+        return Inertia::render('EditArticle', [
+            'article' => $article
+        ]);
+    }
+
+    public function update(Request $request, Article $article)
+    {
+        $validated = $request->validate([
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        $article->update($validated);
         return redirect('/admin');
     }
 }
