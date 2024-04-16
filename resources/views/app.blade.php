@@ -43,6 +43,7 @@
                         gradientBlue: '#00FFCD',
                         lightBlue: '#3570FF',
                         grayBg: '#F8F9FA',
+                        grayText: '#DBE1F0',
                         darkerGreen: '#18C718',
                         lightGreen: '#24DA24',
                         darkerRed: '#FF0007',
