@@ -42,6 +42,7 @@ function ArticleItem({ article, deleteArticle }) {
                     <div className="fixed inset-0 flex items-center justify-center z-40">
                         <div className="p-4 rounded-lg flex flex-col bg-white text-black z-50">
                             <h2 className="text-2xl font-semibold">Delete "{article.title}"?</h2>
+                            <p className="mt-4">Are you sure to delete this article forever?</p>
                             <div className="justify-end flex gap-3 mt-6">
                                 <button onClick={() => setIsModalDeleteOpen(!isModalDeleteOpen)} className="px-4 py-2 text-white rounded-lg bg-darkerBlue">Close</button>
                                 <button onClick={() => deleteArticle(article.id)} className="px-4 py-2 text-white rounded-lg bg-red-600">Delete</button>

@@ -10,7 +10,7 @@ export default function EditArticle({ article }) {
         body: article.body,
     })
 
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(true)
 
     function onSubmitEventHandler(e) {
         e.preventDefault()
@@ -31,10 +31,13 @@ export default function EditArticle({ article }) {
                     isOpen &&
                     <>
                         <div className="fixed inset-0 flex items-center justify-center z-40">
-                            <div className="p-4 rounded-lg flex flex-col bg-white text-black z-50">
+                            <div className="p-4 rounded-lg flex flex-col bg-white text-black z-50 relative">
+                                <div onClick={openModalEventHandler} className="absolute -top-2 -right-2 shadow-md p-2 bg-white  rounded-full">
+                                    <img src="/icon/closeIcon.svg" className="w-4" />
+                                </div>
                                 <h2 className="text-2xl font-semibold">Save Article</h2>
                                 <label htmlFor="title" className="mt-5 text-sm">Title:</label>
-                                <input type="text" id="title" className=" rounded-lg border py-2 px-3 " value={data.title} onChange={(e) => setData('title', e.target.value)} />
+                                <input type="text" id="title" className="rounded-lg border py-2 px-3" value={data.title} onChange={(e) => setData('title', e.target.value)} />
                                 <button type="submit" disabled={processing} className={`mt-4 py-2 px-4 bg-darkerBlue rounded-lg text-white ${processing && 'opacity-25'}`}>Save Article</button>
                                 {errors.title &&
                                     <p className="mt-2 text-sm text-red-700">{errors.title}</p>

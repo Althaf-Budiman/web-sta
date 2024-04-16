@@ -32,6 +32,9 @@ export default function CreateArticle() {
                     <>
                         <div className="fixed inset-0 flex items-center justify-center z-40">
                             <div className="p-4 rounded-lg flex flex-col bg-white text-black z-50">
+                                <button onClick={openModalEventHandler} className=" absolute -top-2 -right-2 shadow-md p-2 bg-white  rounded-full">
+                                    <img src="/icon/closeIcon.svg" className="w-4" />
+                                </button>
                                 <h2 className="text-2xl font-semibold">Create Article</h2>
                                 <label htmlFor="title" className="mt-5 text-sm">Title:</label>
                                 <input type="text" id="title" className=" rounded-lg border py-2 px-3 " value={data.title} onChange={(e) => setData('title', e.target.value)} />
