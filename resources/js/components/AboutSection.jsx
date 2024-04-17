@@ -21,7 +21,7 @@ export default function AboutSection() {
     }
 
     return (
-        <div className="mt-36" id="about">
+        <div className="mt-48" id="about">
             <div className="mt-16 flex flex-col items-center justify-between mx-10 lg:flex-row lg:mx-32 gap-16">
                 <img data-aos="fade-up-right" src="./img/about1.png" className="rounded-xl shadow-xl w-64" />
                 <div className="flex flex-col items-center gap-5">
