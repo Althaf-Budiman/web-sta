@@ -8,8 +8,9 @@ import Footer from '../components/Footer';
 import TestimonialsSection from '../components/TestimonialsSection';
 import AOS from 'aos';
 import 'aos/dist/aos.css'
+import LatestArticlesSection from '../components/LatestArticlesSection';
 
-export default function Home() {
+export default function Home({ latestArticles }) {
 
     useEffect(() => {
         AOS.init()
@@ -21,6 +22,7 @@ export default function Home() {
             <AboutSection />
             <ServicesSection />
             <TestimonialsSection />
+            <LatestArticlesSection latestArticles={latestArticles}  />
             <ContactSection />
             {/* <Footer /> */}
         </>

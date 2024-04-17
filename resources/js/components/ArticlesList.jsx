@@ -22,7 +22,7 @@ export default function ArticlesList({ articles }) {
     )
 }
 
-function ArticleItem({ article, deleteArticle }) {
+export function ArticleItem({ article, deleteArticle }) {
     const { url } = usePage();
     const inAdminPage = url.includes('/admin');
 
