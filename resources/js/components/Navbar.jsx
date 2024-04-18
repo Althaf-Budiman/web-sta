@@ -8,10 +8,10 @@ export default function Navbar() {
     const { url } = usePage()
     const [scrollPassHero, setScrollPassHero] = useState(false)
 
-    const inHomePage = url === '/' ? true : false
+    const transparentFirst = url === '/' ? true : false || url === '/about' ? true : false
 
     useEffect(() => {
-        if (inHomePage) {
+        if (transparentFirst) {
             window.addEventListener("scroll", () => {
                 setScrollPassHero(window.scrollY > 15)
             })
@@ -28,6 +28,7 @@ export default function Navbar() {
                 <h1 className="text-xl font-semibold ms-4">Super Tasko Aria</h1>
             </a>
             <ul className="gap-8 px-3 hidden md:flex">
+                <a href="/about" className="hover:text-darkerBlue"><li>About</li></a>
                 <a href="/articles" className="hover:text-darkerBlue"><li>Article</li></a>
             </ul>
         </nav>
