@@ -6,7 +6,7 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class HomeController extends Controller
+class NavigationController extends Controller
 {
     public function home()
     {
@@ -14,5 +14,10 @@ class HomeController extends Controller
         return Inertia::render('Home', [
             'latestArticles' => $latestArticles
         ]);
+    }
+
+    public function about()
+    {
+        return Inertia::render('About');
     }
 }
