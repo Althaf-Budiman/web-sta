@@ -21,6 +21,8 @@ Route::get('/', [NavigationController::class, 'home'])->name('home');
 
 Route::get('/about', [NavigationController::class, 'about'])->name('about');
 
+Route::get('/supacon', [NavigationController::class, 'supaconService'])->name('supacon');
+
 Route::controller(ArticleController::class)->group(function () {
 
     Route::get('/articles', 'index')->name('articles.index');

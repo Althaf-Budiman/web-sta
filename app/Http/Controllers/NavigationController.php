@@ -20,4 +20,8 @@ class NavigationController extends Controller
     {
         return Inertia::render('About');
     }
+
+    public function supaconService() {
+        return Inertia::render('SupaconService');
+    }
 }

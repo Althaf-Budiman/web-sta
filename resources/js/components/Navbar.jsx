@@ -8,7 +8,7 @@ export default function Navbar() {
     const { url } = usePage()
     const [scrollPassHero, setScrollPassHero] = useState(false)
 
-    const transparentFirst = url === '/' ? true : false || url === '/about' ? true : false
+    const transparentFirst = url === '/' ? true : false || url === '/about' || url === '/supacon' ? true : false
 
     useEffect(() => {
         if (transparentFirst) {

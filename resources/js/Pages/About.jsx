@@ -1,11 +1,11 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import HeroAbout from "../components/HeroAbout";
 import AboutCard from "../components/AboutCard";
 import ContactCard from "../components/ContactCard";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
+import HeroAboutService from "../components/HeroAboutService";
 
 
 export default function About() {
@@ -17,7 +17,7 @@ export default function About() {
     return (
         <>
             <Navbar />
-            <HeroAbout />
+            <HeroAboutService title={'ABOUT & CONTACT'} />
             <div id="about" data-aos="fade-up" className="mt-36 flex justify-center">
                 <AboutCard />
             </div>
