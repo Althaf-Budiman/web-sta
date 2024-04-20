@@ -5,6 +5,7 @@ import 'aos/dist/aos.css'
 import HeroAboutService from "../components/HeroAboutService";
 import DetailSupacon from "../components/DetailSupacon";
 import SupaconBeforeAfterAndType from "../components/SupaconBeforeAfterAndType";
+import SupaconWorkDetail from "../components/SupaconWorkDetail";
 
 export default function SupaconService() {
     useEffect(() => {
@@ -16,6 +17,7 @@ export default function SupaconService() {
             <HeroAboutService title={'SUPACON'} />
             <DetailSupacon />
             <SupaconBeforeAfterAndType />
+            <SupaconWorkDetail />
         </>
     )
 }

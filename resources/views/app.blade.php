@@ -49,6 +49,7 @@
                         darkerRed: '#FF0007',
                         lightRed: '#FE2C32',
                         darkBlueBg: '#223659',
+                        lightBlue: '#36E6DA'
                     },
                 },
             },
