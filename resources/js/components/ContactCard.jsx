@@ -60,7 +60,7 @@ function ContactItem({ icon, text }) {
 
 function Input({ name, placeholder, type = "text" }) {
     return (
-        <div className="w-full mx-2 md:w-[40%] mb-5">
+        <div className="w-full md:w-[40%] mb-5">
             <div className="relative w-full h-12">
                 <input
                     className="text-black mt-4 ps-2 w-full py-2 border rounded-lg"

@@ -21,7 +21,7 @@ export default function About() {
             <div id="about" data-aos="fade-up" className="mt-36 flex justify-center">
                 <AboutCard />
             </div>
-            <div id="contact" className="bg-[url('./img/bgMap.png')] parallax relative p-10 mt-36 flex justify-center">
+            <div id="contact" className="bg-[url('./img/bgMap.png')] parallax relative py-10 lg:p-10 mt-36 flex justify-center">
                 <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
                 <ContactCard />
             </div>
