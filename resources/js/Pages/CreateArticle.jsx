@@ -60,7 +60,7 @@ export default function CreateArticle() {
                     onEditorChange={(newValue, editor) => setData('body', newValue)}
                 />
 
-                <div onClick={openModalEventHandler} className="hover:bg-gray-200 hover:cursor-pointer bg-white transition-all fixed right-3 bottom-5 rounded-full p-4 card-shadow">
+                <div onClick={openModalEventHandler} className="hover:bg-gray-200 hover:cursor-pointer bg-white transition fixed right-3 bottom-5 rounded-full p-4 card-shadow">
                     Save
                 </div>
             </form>

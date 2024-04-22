@@ -21,7 +21,7 @@ function TestimonialCard({ name, job, review }) {
             <img key={i} src="/icon/Star.svg" className="w-6" />)
     }
     return (
-        <div data-aos="fade-down" className="flex flex-col p-5 border border-transparent hover:border-gray-400 transition-all rounded-lg card-shadow text-sm max-w-80">
+        <div data-aos="fade-down" className="flex flex-col p-5 border border-transparent hover:border-gray-400 transition rounded-lg card-shadow text-sm max-w-80">
             <div className="flex gap-2">
                 <img src="/icon/guest.svg" />
                 <div className="flex items-start flex-col ">
