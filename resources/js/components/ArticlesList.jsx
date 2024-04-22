@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime"
 import { usePage } from "@inertiajs/inertia-react";
@@ -87,6 +87,11 @@ export function ArticleItem({ article, deleteArticle }) {
 function ArticlesListContainer({ articles }) {
     const [articleList, setArticleList] = useState(articles);
 
+    useEffect(() => {
+        setArticleList(articles);
+    }, [articles]);
+
+
     const deleteArticleHandler = async (id) => {
         try {
             await Inertia.delete(`/articles/${id}`);
@@ -114,7 +119,6 @@ function ArticlesListHeader({ search, setSearch }) {
         <div className="mt-8 flex justify-between mx-16 flex-col md:flex-row">
             <h2 className="text-2xl font-semibold">All Articles</h2>
             <div className="flex gap-5 ">
-                <img src="/icon/filter.svg" className="w-7" />
                 <div className="relative">
                     <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" className="px-4 py-2 bg-gray-300 rounded-full pr-10" />
                     <img src="/icon/search.svg" className="absolute right-3 top-1/2 transform -translate-y-1/2" />
