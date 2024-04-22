@@ -8,7 +8,7 @@ export default function ContactSection() {
                 <h2 data-aos="fade-right" className="font-bold text-4xl " id="contact">CONTACT</h2>
                 <p data-aos="fade-left" className="font-medium italic mt-4">Need Assistance? Contact Our Team</p>
                 <p data-aos="fade-right" className='mt-10  max-w-lg'>Contact our seasoned team directly for service, pricing, or general queries. Our experts ensure professional and knowledgeable assistance. Start a conversation with us today to discover how we can cater to your needs.</p>
-                <a data-aos="fade-left" href="/about" className="mt-11 px-9 w-fit text-sm py-3 font-semibold border rounded-3xl border-white hover:bg-white hover:text-darkerBlue transition-all ease">
+                <a data-aos="fade-left" href="/about#contact" className="mt-11 px-9 w-fit text-sm py-3 font-semibold border rounded-3xl border-white hover:bg-white hover:text-darkerBlue transition ease">
                     <p>CONTACT US</p>
                 </a>
             </div>

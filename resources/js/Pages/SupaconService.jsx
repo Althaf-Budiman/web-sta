@@ -6,6 +6,7 @@ import HeroAboutService from "../components/HeroAboutService";
 import DetailSupacon from "../components/DetailSupacon";
 import SupaconBeforeAfterAndType from "../components/SupaconBeforeAfterAndType";
 import SupaconWorkDetail from "../components/SupaconWorkDetail";
+import ContactSection from "../components/ContactSection";
 
 export default function SupaconService() {
     useEffect(() => {
@@ -18,6 +19,7 @@ export default function SupaconService() {
             <DetailSupacon />
             <SupaconBeforeAfterAndType />
             <SupaconWorkDetail />
+            <ContactSection /> 
         </>
     )
 }

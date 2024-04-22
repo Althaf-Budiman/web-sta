@@ -21,7 +21,7 @@ export default function Home({ latestArticles }) {
             <HeroSection />
             <AboutSection />
             <ServicesSection />
-            <TestimonialsSection />
+            {/* <TestimonialsSection /> */}
             <LatestArticlesSection latestArticles={latestArticles}  />
             <ContactSection />
             {/* <Footer /> */}
