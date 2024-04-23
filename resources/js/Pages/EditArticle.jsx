@@ -10,7 +10,7 @@ export default function EditArticle({ article }) {
         body: article.body,
     })
 
-    const [isOpen, setIsOpen] = useState(true)
+    const [isOpen, setIsOpen] = useState(false)
 
     function onSubmitEventHandler(e) {
         e.preventDefault()
@@ -32,7 +32,7 @@ export default function EditArticle({ article }) {
                     <>
                         <div className="fixed inset-0 flex items-center justify-center z-40">
                             <div className="p-4 rounded-lg flex flex-col bg-white text-black z-50 relative">
-                                <div onClick={openModalEventHandler} className="absolute -top-2 -right-2 shadow-md p-2 bg-white  rounded-full">
+                                <div onClick={openModalEventHandler} className="hover:cursor-pointer absolute -top-2 -right-2 shadow-md p-2 bg-white  rounded-full">
                                     <img src="/icon/closeIcon.svg" className="w-4" />
                                 </div>
                                 <h2 className="text-2xl font-semibold">Save Article</h2>

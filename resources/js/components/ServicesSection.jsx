@@ -18,15 +18,17 @@ export default function ServicesSection() {
     )
 }
 
-function ServiceCard({ name, logo, preview, dataAos, link }) {
+function ServiceCard({ name, logo, preview, dataAos, link = '' }) {
     return (
         <div data-aos={dataAos} data-aos-duration="4000" className="hover:border-white hover:bg-darkerBlue hover:bg-opacity-65 border transition border-transparent p-8 rounded-xl mt-14 flex flex-wrap flex-col items-center max-w-72">
             <img src={logo} className="w-20" />
             <p className="font-semibold text-2xl">{name}</p>
             <p className=" mt-5">{preview}</p>
-            <a href={link} className="mt-3 px-4 py-1 font-semibold border rounded-lg border-white hover:bg-white hover:text-darkerBlue transition ease">
-                <p className="text-sm">Detail</p>
-            </a>
+            {link !== '' && (
+                <a href={link} className="mt-3 px-4 py-1 font-semibold border rounded-lg border-white hover:bg-white hover:text-darkerBlue transition ease">
+                    <p className="text-sm">Detail</p>
+                </a>
+            )}
         </div>
     )
 }
