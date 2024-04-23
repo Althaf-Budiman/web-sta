@@ -30,12 +30,20 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'thumbnail' => 'required|mimes:png,jpg,jpeg',
         ]);
 
-        Article::create($validated);
+        // upload image 
+        $thumbnail = $request->file('thumbnail')->store('thumbnail');
+
+        Article::create([
+            'title' => $request->title,
+            'body' => $request->body,
+            'thumbnail' => $thumbnail
+        ]);
         return redirect('/admin');
     }
 
@@ -54,12 +62,19 @@ class ArticleController extends Controller
 
     public function update(Request $request, Article $article)
     {
-        $validated = $request->validate([
+        $request->validate([
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'thumbnail' => 'required|mimes:png,jpg,jpeg'
         ]);
 
-        $article->update($validated);
+        $thumbnail = $request->file('thumbnail')->store('thumbnail');
+
+        $article->update([
+            'title' => $request->title,
+            'body' => $request->body,
+            'thumbnail' => $thumbnail
+        ]);
         return redirect('/admin');
     }
 }

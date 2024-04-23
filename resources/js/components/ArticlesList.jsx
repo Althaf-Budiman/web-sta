@@ -55,7 +55,7 @@ export function ArticleItem({ article, deleteArticle }) {
             <div className="relative">
                 <div className="rounded-xl transition border flex flex-col border-gray-300 p-4 w-72 h-60">
                     <a href={`/articles/${article.id}`}>
-                        <div className="w-full h-32 border border-black rounded-xl"></div>
+                        <img src={`./storage/${article.thumbnail}`} className="w-full h-32 border border-black rounded-xl"></img>
                     </a>
                     <a href={`/articles/${article.id}`}>
                         <h3 className="hover:underline mt-4 font-semibold h-[48px]">{article.title}</h3>

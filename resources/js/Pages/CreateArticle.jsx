@@ -8,6 +8,7 @@ export default function CreateArticle() {
     const { data, setData, post, errors, reset, processing } = useForm({
         title: '',
         body: '',
+        thumbnail: ''
     })
 
     const [isOpen, setIsOpen] = useState(false)
@@ -26,7 +27,7 @@ export default function CreateArticle() {
     return (
         <>
             <Navbar />
-            <form className="mt-24" onSubmit={onSubmitEventHandler}>
+            <form className="mt-24" onSubmit={onSubmitEventHandler} encType="multipart/form-data">
                 {
                     isOpen &&
                     <>
@@ -38,12 +39,19 @@ export default function CreateArticle() {
                                 <h2 className="text-2xl font-semibold">Create Article</h2>
                                 <label htmlFor="title" className="mt-5 text-sm">Title:</label>
                                 <input type="text" id="title" className=" rounded-lg border py-2 px-3 " value={data.title} onChange={(e) => setData('title', e.target.value)} />
+                                
+                                <label htmlFor="thumbnail" className="mt-5 text-sm">Thumbnail:</label>
+                                <input type="file" className="mt-2" id="thumbnail" onChange={(e) => setData('thumbnail', e.target.files[0])} />
+                                
                                 <button type="submit" disabled={processing} className={`mt-4 py-2 px-4 bg-darkerBlue rounded-lg text-white ${processing && 'opacity-25'}`}>Create Article</button>
                                 {errors.title &&
                                     <p className="mt-2 text-sm text-red-700">{errors.title}</p>
                                 }
                                 {errors.body &&
                                     <p className="mt-2 text-sm text-red-700">{errors.body}</p>
+                                }
+                                {errors.thumbnail &&
+                                    <p className="mt-2 text-sm text-red-700">{errors.thumbnail}</p>
                                 }
                             </div>
                             <div onClick={openModalEventHandler} className="fixed inset-0 bg-black opacity-35"></div>
