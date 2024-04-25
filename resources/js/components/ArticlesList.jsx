@@ -46,7 +46,7 @@ export function ArticleItem({ article }) {
         setOptions(!options);
     };
 
-    const deleteArticleHandler = async (id) => {
+    const deleteArticleHandler = (id) => {
         Inertia.delete(`/articles/${id}`)
     };
 

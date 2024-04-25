@@ -96,7 +96,7 @@ class ArticleController extends Controller
             $article->thumbnail = $filename;
             $article->save();
 
-            return redirect('/admin')->with('success', 'Thumbnail updated successfully');
+            return redirect()->route('admin')->with('success', 'Thumbnail updated successfully');
         }
 
         return redirect('/admin')->with('error', 'Failed to update thumbnail');
