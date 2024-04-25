@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime"
-import { usePage } from "@inertiajs/inertia-react";
+import { useForm, usePage } from "@inertiajs/inertia-react";
 import { Inertia } from "@inertiajs/inertia";
 
 dayjs.extend(relativeTime)
@@ -22,16 +22,32 @@ export default function ArticlesList({ articles }) {
     )
 }
 
-export function ArticleItem({ article, deleteArticle }) {
+export function ArticleItem({ article }) {
+
+    const { data, setData, patch, errors, reset, processing } = useForm({
+        thumbnail: article.thumbnail
+    })
+
+    function onSubmitThumbnailChangeHandler(e) {
+        e.preventDefault()
+        console.log(data.thumbnail)
+        patch(`/articles/${article.id}/editThumbnail`, { onSuccess: () => reset() })
+    }
+
     const { url } = usePage();
     const inAdminPage = url.includes('/admin');
 
     const [options, setOptions] = useState(false);
     const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false)
+    const [isModalEditThumbnailOpen, setIsModalEditThumbnailOpen] = useState(false)
 
     const handleOptionsClick = (e) => {
         e.preventDefault();
         setOptions(!options);
+    };
+
+    const deleteArticleHandler = async (id) => {
+        Inertia.delete(`/articles/${id}`)
     };
 
     return (
@@ -45,10 +61,41 @@ export function ArticleItem({ article, deleteArticle }) {
                             <p className="mt-4">Are you sure to delete this article forever?</p>
                             <div className="justify-end flex gap-3 mt-6">
                                 <button onClick={() => setIsModalDeleteOpen(!isModalDeleteOpen)} className="px-4 py-2 text-white rounded-lg bg-darkerBlue">Close</button>
-                                <button onClick={() => deleteArticle(article.id)} className="px-4 py-2 text-white rounded-lg bg-red-600">Delete</button>
+                                <form onSubmit={() => deleteArticleHandler(article.id)}>
+                                    <button type="submit" className="px-4 py-2 text-white rounded-lg bg-red-600">Delete</button>
+                                </form>
                             </div>
                         </div>
                         <div onClick={() => setIsModalDeleteOpen(!isModalDeleteOpen)} className="fixed inset-0 bg-black opacity-35"></div>
+                    </div>
+                </>
+            }
+            {
+                isModalEditThumbnailOpen &&
+                <>
+                    <div className="fixed inset-0 flex items-center justify-center z-40">
+                        <div className="p-4 rounded-lg flex flex-col bg-white text-black z-50 relative">
+                            <div onClick={() => { setIsModalEditThumbnailOpen(!isModalEditThumbnailOpen); setOptions(false) }} className="hover:cursor-pointer absolute -top-2 -right-2 shadow-md p-2 bg-white  rounded-full">
+                                <img src="/icon/closeIcon.svg" className="w-4" />
+                            </div>
+
+                            <h2 className="text-2xl font-semibold">Edit Thumbnail "{article.title}"</h2>
+                            <img src={`./storage/${article.thumbnail}`} className="w-full my-5 h-52 border border-black rounded-xl"></img>
+
+                            <form onSubmit={onSubmitThumbnailChangeHandler} encType="multipart/form-data">
+                                <label htmlFor="thumbnail" className="mt-5 text-sm">Thumbnail:</label> <br />
+                                <input type="file" className="mt-2" id="thumbnail" onChange={(e) => setData('thumbnail', e.target.files[0])} />
+
+                                {errors.thumbnail &&
+                                    <p className="mt-2 text-sm text-red-700">{errors.thumbnail}</p>
+                                }
+
+                                <div className="justify-end flex gap-3 mt-6">
+                                    <button type="submit" disabled={processing} className={`mt-4 w-full py-2 px-4 bg-darkerBlue rounded-lg text-white ${processing && 'opacity-25'}`}>Save</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div onClick={() => setIsModalDeleteOpen(!isModalEditThumbnailOpen)} className="fixed inset-0 bg-black opacity-35"></div>
                     </div>
                 </>
             }
@@ -70,8 +117,9 @@ export function ArticleItem({ article, deleteArticle }) {
                                 {options &&
                                     <div id="options" className="absolute right-10 bottom-0  shadow-md">
                                         <ul className="flex flex-col">
-                                            <button onClick={() => setIsModalDeleteOpen(!isModalDeleteOpen)} className="hover:bg-gray-200 bg-white px-4 py-3" >Delete</button>
+                                            <button onClick={() => setIsModalDeleteOpen(!isModalDeleteOpen)} className="hover:bg-gray-200 bg-white px-4 py-3 text-start" >Delete</button>
                                             <a href={`/articles/${article.id}/edit`} className="hover:bg-gray-200 bg-white px-4 py-3">Edit</a>
+                                            <button onClick={() => setIsModalEditThumbnailOpen(!isModalEditThumbnailOpen)} className="hover:bg-gray-200 bg-white px-4 py-3" >Edit Thumbnail</button>
                                         </ul>
                                     </div>
                                 }
@@ -91,28 +139,14 @@ function ArticlesListContainer({ articles }) {
         setArticleList(articles);
     }, [articles]);
 
-
-    const deleteArticleHandler = async (id) => {
-        try {
-            await Inertia.delete(`/articles/${id}`);
-            // Remove the deleted article from the list
-            setArticleList(articleList.filter(article => article.id !== id));
-        } catch (error) {
-            console.error('Error deleting article:', error);
-        }
-    };
-
     return (
         <div className="mt-6 flex mx-16 gap-10 justify-center flex-wrap">
             {articleList.map(article => (
-                <ArticleItem key={article.id} article={article} deleteArticle={deleteArticleHandler} />
+                <ArticleItem key={article.id} article={article} />
             ))}
         </div>
     );
 }
-
-
-
 
 function ArticlesListHeader({ search, setSearch }) {
     return (

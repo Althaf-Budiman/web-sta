@@ -50,7 +50,8 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         $article->delete();
-        return redirect('/admin');
+
+        return redirect()->route('admin')->with('success', 'data deleted');
     }
 
     public function edit(Article $article)
@@ -65,16 +66,22 @@ class ArticleController extends Controller
         $request->validate([
             'title' => 'required',
             'body' => 'required',
-            'thumbnail' => 'required|mimes:png,jpg,jpeg'
         ]);
-
-        $thumbnail = $request->file('thumbnail')->store('thumbnail');
 
         $article->update([
             'title' => $request->title,
             'body' => $request->body,
-            'thumbnail' => $thumbnail
         ]);
+        return redirect('/admin');
+    }
+
+    public function updateThumbnail(Request $request, Article $article)
+    {
+        $validated = $request->validate([
+            'thumbnail' => 'required|mimes:png,jpg,jpeh'
+        ]);
+
+        $article->update($validated);
         return redirect('/admin');
     }
 }

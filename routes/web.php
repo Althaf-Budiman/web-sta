@@ -35,6 +35,8 @@ Route::controller(ArticleController::class)->group(function () {
 
     Route::get('/articles/{article}/edit', 'edit')->middleware('auth')->name('articles.edit');
     Route::patch('/articles/{article}/edit', 'update')->middleware('auth')->name('articles.update');
+
+    Route::patch('/articles/{article}/editThumbnail', 'updateThumbnail')->middleware('auth');
 });
 
 Route::controller(AuthenticationController::class)->group(function () {
@@ -43,4 +45,4 @@ Route::controller(AuthenticationController::class)->group(function () {
     Route::post('/logout', 'logout')->middleware('auth');
 });
 
-Route::get('/admin', [AdminController::class, 'adminView'])->middleware('auth');
+Route::get('/admin', [AdminController::class, 'adminView'])->name('admin')->middleware('auth');
