@@ -24,14 +24,14 @@ export default function ArticlesList({ articles }) {
 
 export function ArticleItem({ article }) {
 
-    const { data, setData, patch, errors, reset, processing } = useForm({
-        thumbnail: article.thumbnail
+    const { data, setData, post, errors, processing } = useForm({
+        thumbnail: article.thumbnail,
+        _method: 'patch'
     })
 
-    function onSubmitThumbnailChangeHandler(e) {
-        e.preventDefault()
+    function onSubmitThumbnailChangeHandler() {
         console.log(data.thumbnail)
-        patch(`/articles/${article.id}/editThumbnail`, { onSuccess: () => reset() })
+        post(`/articles/${article.id}/editThumbnail`)
     }
 
     const { url } = usePage();
@@ -80,7 +80,7 @@ export function ArticleItem({ article }) {
                             </div>
 
                             <h2 className="text-2xl font-semibold">Edit Thumbnail "{article.title}"</h2>
-                            <img src={`./storage/${article.thumbnail}`} className="w-full my-5 h-52 border border-black rounded-xl"></img>
+                            <img src={`./storage/thumbnail/${article.thumbnail}`} className="w-full my-5 h-52 border border-black rounded-xl"></img>
 
                             <form onSubmit={onSubmitThumbnailChangeHandler} encType="multipart/form-data">
                                 <label htmlFor="thumbnail" className="mt-5 text-sm">Thumbnail:</label> <br />
@@ -102,7 +102,7 @@ export function ArticleItem({ article }) {
             <div className="relative">
                 <div className="rounded-xl transition border flex flex-col border-gray-300 p-4 w-72 h-60">
                     <a href={`/articles/${article.id}`}>
-                        <img src={`./storage/${article.thumbnail}`} className="w-full h-32 border border-black rounded-xl"></img>
+                        <img src={`./storage/thumbnail/${article.thumbnail}`} className="w-full h-32 border border-black rounded-xl"></img>
                     </a>
                     <a href={`/articles/${article.id}`}>
                         <h3 className="hover:underline mt-4 font-semibold h-[48px]">{article.title}</h3>
@@ -117,8 +117,8 @@ export function ArticleItem({ article }) {
                                 {options &&
                                     <div id="options" className="absolute right-10 bottom-0  shadow-md">
                                         <ul className="flex flex-col">
-                                            <button onClick={() => setIsModalDeleteOpen(!isModalDeleteOpen)} className="hover:bg-gray-200 bg-white px-4 py-3 text-start" >Delete</button>
-                                            <a href={`/articles/${article.id}/edit`} className="hover:bg-gray-200 bg-white px-4 py-3">Edit</a>
+                                            <button onClick={() => setIsModalDeleteOpen(!isModalDeleteOpen)} className="hover:bg-gray-200 bg-white px-4 py-3 text-start" >Delete Article</button>
+                                            <a href={`/articles/${article.id}/edit`} className="hover:bg-gray-200 bg-white px-4 py-3">Edit Article</a>
                                             <button onClick={() => setIsModalEditThumbnailOpen(!isModalEditThumbnailOpen)} className="hover:bg-gray-200 bg-white px-4 py-3" >Edit Thumbnail</button>
                                         </ul>
                                     </div>

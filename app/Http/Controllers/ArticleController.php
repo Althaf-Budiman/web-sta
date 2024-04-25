@@ -36,14 +36,18 @@ class ArticleController extends Controller
             'thumbnail' => 'required|mimes:png,jpg,jpeg',
         ]);
 
-        // upload image 
-        $thumbnail = $request->file('thumbnail')->store('thumbnail');
+        $thumbnail = $request->file('thumbnail');
+        $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
+
+        // Save File To The Storage
+        $thumbnail->storeAs('thumbnail', $filename);
 
         Article::create([
             'title' => $request->title,
             'body' => $request->body,
-            'thumbnail' => $thumbnail
+            'thumbnail' => $filename // Save file name in thumbnail field
         ]);
+
         return redirect('/admin');
     }
 
@@ -77,11 +81,24 @@ class ArticleController extends Controller
 
     public function updateThumbnail(Request $request, Article $article)
     {
-        $validated = $request->validate([
-            'thumbnail' => 'required|mimes:png,jpg,jpeh'
+        $request->validate([
+            'thumbnail' => 'required|image|mimes:png,jpg,jpeg|max:2048', // Validation
         ]);
 
-        $article->update($validated);
-        return redirect('/admin');
+        if ($request->hasFile('thumbnail')) {
+            $thumbnail = $request->file('thumbnail');
+            $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
+
+            // Save file to storage
+            $thumbnail->storeAs('thumbnail', $filename);
+
+            // Update path thumbnail in article model
+            $article->thumbnail = $filename;
+            $article->save();
+
+            return redirect('/admin')->with('success', 'Thumbnail updated successfully');
+        }
+
+        return redirect('/admin')->with('error', 'Failed to update thumbnail');
     }
 }
