@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NavigationController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,3 +47,5 @@ Route::controller(AuthenticationController::class)->group(function () {
 });
 
 Route::get('/admin', [AdminController::class, 'adminView'])->name('admin')->middleware('auth');
+
+Route::post('/sendInquiry', [ContactController::class, 'sendInquiry'])->name('inquiry');
