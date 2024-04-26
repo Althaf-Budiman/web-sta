@@ -26,6 +26,6 @@ class ContactController extends Controller
             $request->inquiry,
         ));
 
-        return redirect('/about#contact');
+        return redirect('/about');
     }
 }
