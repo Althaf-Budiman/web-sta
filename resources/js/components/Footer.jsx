@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Footer() {
     return (
-        <footer className=" text-white font-light flex text-xs justify-between items-center p-5 bg-darkBlueBg">
+        <footer id='footer' className="text-white font-light flex flex-col gap-5 md:flex-row text-xs justify-between items-center p-5">
             <p>Copyright © PT. Super Tasko Aria</p>
             <a href="https://wa.me/6281320361179" target="blank">
                 <img src="/icon/whatsapp.svg" />
