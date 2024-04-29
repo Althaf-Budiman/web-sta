@@ -42,7 +42,7 @@ export default function Navbar() {
                 </button>
             </div>
             <ul className={`${showMenu ? 'flex flex-col md:flex-row gap-8 px-3 md:items-center' : 'hidden md:flex gap-10'} flex flex-row absolute top-16 left-0 bg-white w-full md:relative md:w-auto md:bg-transparent md:top-auto`}>
-                <a href="/about" className={`hover:text-darkerBlue transition md:p-0 p-2 ${scrollPassHero ? 'text-black' : 'text-black md:text-white'}`}><li>About</li></a>
+                <a href="/about" className={`hover:text-darkerBlue transition md:p-0 p-2 ${scrollPassHero ? 'text-black' : 'text-black md:text-white'}`}><li>About & Contact</li></a>
                 <li className={`relative ${showDropdown ? 'z-50' : ''}`}>
                     <button onClick={toggleDropdown} className={`hover:text-darkerBlue transition md:p-0 p-2 focus:outline-none ${scrollPassHero ? 'text-black' : 'text-black md:text-white'}`}>
                         Services
