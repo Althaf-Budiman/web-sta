@@ -32,7 +32,7 @@ Route::controller(ArticleController::class)->group(function () {
     Route::get('/articles/{article}', 'show')->name('articles.show');
     Route::post('/articles', 'store')->name('articles.store')->middleware('auth');
 
-    Route::delete('/articles/{article}', 'destroy')->middleware('auth');
+    Route::delete('/articles/{article}', 'destroy')->middleware('auth')->name('articles.delete');
 
     Route::get('/articles/{article}/edit', 'edit')->middleware('auth')->name('articles.edit');
     Route::patch('/articles/{article}/edit', 'update')->middleware('auth')->name('articles.update');

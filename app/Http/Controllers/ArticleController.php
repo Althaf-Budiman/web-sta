@@ -55,7 +55,7 @@ class ArticleController extends Controller
     {
         $article->delete();
 
-        return redirect()->route('admin')->with('success', 'data deleted');
+        return redirect(route('admin'));
     }
 
     public function edit(Article $article)

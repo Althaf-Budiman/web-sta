@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime"
-import { useForm, usePage } from "@inertiajs/inertia-react";
-import { Inertia } from "@inertiajs/inertia";
+import { Link, useForm, usePage } from "@inertiajs/inertia-react";
 
 dayjs.extend(relativeTime)
 
@@ -29,11 +28,6 @@ export function ArticleItem({ article }) {
         _method: 'patch'
     })
 
-    function onSubmitThumbnailChangeHandler() {
-        console.log(data.thumbnail)
-        post(`/articles/${article.id}/editThumbnail`)
-    }
-
     const { url } = usePage();
     const inAdminPage = url.includes('/admin');
 
@@ -41,14 +35,16 @@ export function ArticleItem({ article }) {
     const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false)
     const [isModalEditThumbnailOpen, setIsModalEditThumbnailOpen] = useState(false)
 
+    const [isDeleteInProgress, setIsDeleteInProgress] = useState(false)
+
     const handleOptionsClick = (e) => {
         e.preventDefault();
         setOptions(!options);
     };
 
-    const deleteArticleHandler = (id) => {
-        Inertia.delete(`/articles/${id}`)
-    };
+    function onSubmitThumbnailChangeHandler() {
+        post(`/articles/${article.id}/editThumbnail`)
+    }
 
     return (
         <>
@@ -61,15 +57,22 @@ export function ArticleItem({ article }) {
                             <p className="mt-4">Are you sure to delete this article forever?</p>
                             <div className="justify-end flex gap-3 mt-6">
                                 <button onClick={() => setIsModalDeleteOpen(!isModalDeleteOpen)} className="px-4 py-2 text-white rounded-lg bg-darkerBlue">Close</button>
-                                <form onSubmit={() => deleteArticleHandler(article.id)}>
-                                    <button type="submit" className="px-4 py-2 text-white rounded-lg bg-red-600">Delete</button>
-                                </form>
+                                <Link
+                                    as="button"
+                                    method="delete"
+                                    preserveState
+                                    href={`/articles/${article.id}`}
+                                    onClick={() => setIsDeleteInProgress(true)}
+                                    onSuccess={() => { window.location.reload(); }}
+                                    disabled={isDeleteInProgress}
+                                    className={`px-4 py-2 text-white rounded-lg bg-red-600 ${isDeleteInProgress && 'opacity-25'}`}>Delete</Link>
                             </div>
                         </div>
                         <div onClick={() => setIsModalDeleteOpen(!isModalDeleteOpen)} className="fixed inset-0 bg-black opacity-35"></div>
                     </div>
                 </>
             }
+
             {
                 isModalEditThumbnailOpen &&
                 <>
