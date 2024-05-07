@@ -82,23 +82,21 @@ class ArticleController extends Controller
     public function updateThumbnail(Request $request, Article $article)
     {
         $request->validate([
-            'thumbnail' => 'required|image|mimes:png,jpg,jpeg|max:2048', // Validation
+            'thumbnail' => 'required|mimes:png,jpg,jpeg'
         ]);
 
         if ($request->hasFile('thumbnail')) {
             $thumbnail = $request->file('thumbnail');
             $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
 
-            // Save file to storage
             $thumbnail->storeAs('thumbnail', $filename);
 
-            // Update path thumbnail in article model
             $article->thumbnail = $filename;
             $article->save();
 
             return redirect()->route('admin')->with('success', 'Thumbnail updated successfully');
+        } else {
+            return redirect()->route('admin')->with('error', 'Please upload a thumbnail image.');
         }
-
-        return redirect('/admin')->with('error', 'Failed to update thumbnail');
     }
 }

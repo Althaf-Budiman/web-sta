@@ -23,7 +23,7 @@ export default function ArticlesList({ articles }) {
 
 export function ArticleItem({ article }) {
 
-    const { data, setData, post, errors, processing } = useForm({
+    const { data, setData, post, errors } = useForm({
         thumbnail: article.thumbnail,
         _method: 'patch'
     })
@@ -36,14 +36,17 @@ export function ArticleItem({ article }) {
     const [isModalEditThumbnailOpen, setIsModalEditThumbnailOpen] = useState(false)
 
     const [isDeleteInProgress, setIsDeleteInProgress] = useState(false)
+    const [isThumbnailEditInProgress, setIsThumbnailEditInProgress] = useState(false)
 
     const handleOptionsClick = (e) => {
         e.preventDefault();
         setOptions(!options);
     };
 
-    function onSubmitThumbnailChangeHandler() {
-        post(`/articles/${article.id}/editThumbnail`)
+    function onSubmitThumbnailChangeHandler(e) {
+        e.preventDefault()
+        setIsThumbnailEditInProgress(true)
+        post(`/articles/${article.id}/editThumbnail`, { onSuccess: () => window.location.reload(), onError: () => setIsThumbnailEditInProgress(false) })
     }
 
     return (
@@ -94,7 +97,7 @@ export function ArticleItem({ article }) {
                                 }
 
                                 <div className="justify-end flex gap-3 mt-6">
-                                    <button type="submit" disabled={processing} className={`mt-4 w-full py-2 px-4 bg-darkerBlue rounded-lg text-white ${processing && 'opacity-25'}`}>Save</button>
+                                    <button type="submit" disabled={isThumbnailEditInProgress} className={`mt-4 w-full py-2 px-4 bg-darkerBlue rounded-lg text-white ${isThumbnailEditInProgress && 'opacity-25'}`}>Save</button>
                                 </div>
                             </form>
                         </div>
