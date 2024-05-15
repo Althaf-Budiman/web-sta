@@ -18,14 +18,14 @@ export default function Login() {
         <>
             <Navbar />
             <form onSubmit={onSubmitEventHandler} className="w-screen h-screen flex justify-between items-center">
-                <div className="w-1/2 h-full flex flex-col bg-[url(./img/bgSupacon.png)]">
+                <div className="w-1/2 h-full flex flex-col bg-[url(./img/bgSupacon.png)] max-lg:hidden">
                     <div className="w-1/2 absolute inset-0 bg-black opacity-50 z-0"></div>
                     <div className="flex flex-col justify-center items-center h-full">
                         <img src="/img/supertaskoaria.png" className="w-60 my-5 z-10"/>
                         <h1 className="text-3xl text-white font-bold z-10">Super Tasko Aria</h1>
                     </div>
                 </div>
-                <div className="w-1/2 flex justify-center">
+                <div className="w-1/2 flex justify-center max-lg:w-full">
                     <div className="rounded-lg card-shadow p-10 flex flex-col">
                         <h1 className="text-3xl font-semibold text-center">Login</h1>
                         <label htmlFor="name" className="mt-5 text-sm">Name</label>
