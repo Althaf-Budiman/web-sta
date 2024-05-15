@@ -106,31 +106,38 @@ export function ArticleItem({ article }) {
                 </>
             }
             <div className="relative">
-                <div className="rounded-xl transition border flex flex-col border-gray-300 p-4 w-72 h-60">
+                <div className="rounded-lg transition border flex flex-col border-gray-300 p-4 w-72 h-60 hover:shadow-lg hover:-translate-y-1 duration-300">
                     <a href={`/articles/${article.id}`}>
-                        <img src={`./storage/thumbnail/${article.thumbnail}`} className="w-full h-32 border border-black rounded-xl"></img>
+                    <img src={`./storage/thumbnail/${article.thumbnail}`} className="w-full h-32 border border-gray-400"></img>
                     </a>
-                    <a href={`/articles/${article.id}`}>
-                        <h3 className="hover:underline mt-4 font-semibold h-[48px]">{article.title}</h3>
-                    </a>
-                    <div className="flex flex-row justify-between">
-                        <p className="text-sm">{dayjs(article.created_at).fromNow()}</p>
-                        {inAdminPage &&
-                            <>
-                                <div onClick={handleOptionsClick} className="hover:bg-gray-100 hover:cursor-pointer transition rounded-full p-2 relative">
-                                    <img src="/icon/options.svg" className="w-1" />
-                                </div>
-                                {options &&
-                                    <div id="options" className="absolute right-10 bottom-0  shadow-md">
-                                        <ul className="flex flex-col">
-                                            <button onClick={() => setIsModalDeleteOpen(!isModalDeleteOpen)} className="hover:bg-gray-200 bg-white px-4 py-3 text-start" >Delete Article</button>
-                                            <a href={`/articles/${article.id}/edit`} className="hover:bg-gray-200 bg-white px-4 py-3">Edit Article</a>
-                                            <button onClick={() => setIsModalEditThumbnailOpen(!isModalEditThumbnailOpen)} className="hover:bg-gray-200 bg-white px-4 py-3" >Edit Thumbnail</button>
-                                        </ul>
+                    <div className="flex flex-col justify-between mt-4 content-between">
+                        <div className="flex flex-row justify-between mb-5">
+                            <a href={`/articles/${article.id}`}>
+                                <h3 className="hover:underline font-semibold">{article.title}</h3>
+                            </a>
+                            <div>
+                                <a href={`/articles/${article.id}`}><img src="/icon/visit.svg" className="w-5" /></a>
+                            </div>
+                        </div>
+                        <div className="flex flex-row justify-between">
+                            <p className="text-sm">{dayjs(article.created_at).fromNow()}</p>
+                            {inAdminPage &&
+                                <>
+                                    <div onClick={handleOptionsClick} className="hover:bg-gray-100 hover:cursor-pointer transition rounded-full p-2 relative">
+                                        <img src="/icon/options.svg" className="w-1" />
                                     </div>
-                                }
-                            </>
-                        }
+                                    {options &&
+                                        <div id="options" className="absolute right-10 bottom-0 shadow-md">
+                                            <ul className="flex flex-col">
+                                                <button onClick={() => setIsModalDeleteOpen(!isModalDeleteOpen)} className="hover:bg-gray-200 bg-white px-4 py-3 text-start" >Delete Article</button>
+                                                <a href={`/articles/${article.id}/edit`} className="hover:bg-gray-200 bg-white px-4 py-3">Edit Article</a>
+                                                <button onClick={() => setIsModalEditThumbnailOpen(!isModalEditThumbnailOpen)} className="hover:bg-gray-200 bg-white px-4 py-3" >Edit Thumbnail</button>
+                                            </ul>
+                                        </div>
+                                    }
+                                </>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
@@ -156,11 +163,11 @@ function ArticlesListContainer({ articles }) {
 
 function ArticlesListHeader({ search, setSearch }) {
     return (
-        <div className="mt-8 flex justify-between mx-16 flex-col md:flex-row">
+        <div className="mt-8 flex justify-between mx-16 flex-col md:flex-row gap-3">
             <h2 className="text-2xl font-semibold">All Articles</h2>
             <div className="flex gap-5 ">
                 <div className="relative">
-                    <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" className="px-4 py-2 bg-gray-300 rounded-full pr-10" />
+                <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" className="focus:bg-white px-4 py-2 bg-gray-200 rounded-full pr-10 hover:transition hover:bg-gray-100" />
                     <img src="/icon/search.svg" className="absolute right-3 top-1/2 transform -translate-y-1/2" />
                 </div>
             </div>

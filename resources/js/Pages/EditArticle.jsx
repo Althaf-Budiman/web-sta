@@ -37,8 +37,8 @@ export default function EditArticle({ article }) {
                                 </div>
                                 <h2 className="text-2xl font-semibold">Save Article</h2>
                                 <label htmlFor="title" className="mt-5 text-sm">Title:</label>
-                                <input type="text" id="title" className="rounded-lg border py-2 px-3" value={data.title} onChange={(e) => setData('title', e.target.value)} />
-                                <button type="submit" disabled={processing} className={`mt-4 py-2 px-4 bg-darkerBlue rounded-lg text-white ${processing && 'opacity-25'}`}>Save Article</button>
+                                <input type="text" id="title" className="rounded-lg border py-2 px-3 mt-1" value={data.title} onChange={(e) => setData('title', e.target.value)} />
+                                <button type="submit" disabled={processing} className={`mt-4 py-2 px-4 bg-darkerBlue rounded-lg text-white hover:bg-blue-500 hover:transition ${processing && 'opacity-25'}`}>Save Article</button>
                                 {errors.title &&
                                     <p className="mt-2 text-sm text-red-700">{errors.title}</p>
                                 }
@@ -50,6 +50,11 @@ export default function EditArticle({ article }) {
                         </div>
                     </>
                 }
+                <h1 className="text-5xl font-semibold text-center py-10">Edit the article!</h1>
+                <div className="flex flex-col mb-8">
+                    <h1 className="text-xl font-normal mb-2">Article Title: <span className="font-semibold">{article.title}</span></h1>
+                    <h1 className="text-xl font-normal mt-2">Article was created at: <span className="font-semibold">{article.created_at}</span></h1>
+                </div>
                 <Editor
                     apiKey='5d3gmavobfl1gplfh7eithg9chuj3shiru72msgp1kescjzi'
                     init={{
@@ -60,7 +65,7 @@ export default function EditArticle({ article }) {
                     onEditorChange={(newValue, editor) => setData('body', newValue)}
                 />
 
-                <div onClick={openModalEventHandler} className="hover:bg-gray-200 hover:cursor-pointer bg-white transition fixed right-3 bottom-5 rounded-full p-4 card-shadow">
+                <div onClick={openModalEventHandler} className="hover:bg-blue-900 hover:cursor-pointer bg-blue-700 text-white transition fixed right-3 mt-5 px-6 py-2 rounded-lg card-shadow">
                     Save
                 </div>
             </form>

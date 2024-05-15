@@ -43,7 +43,7 @@ export default function CreateArticle() {
                                 <label htmlFor="thumbnail" className="mt-5 text-sm">Thumbnail:</label>
                                 <input type="file" className="mt-2" id="thumbnail" onChange={(e) => setData('thumbnail', e.target.files[0])} />
                                 
-                                <button type="submit" disabled={processing} className={`mt-4 py-2 px-4 bg-darkerBlue rounded-lg text-white ${processing && 'opacity-25'}`}>Create Article</button>
+                                <button type="submit" disabled={processing} className={`mt-4 py-2 px-4 bg-darkerBlue rounded-lg text-white hover:bg-blue-500 hover:transition ${processing && 'opacity-25'}`}>Create Article</button>
                                 {errors.title &&
                                     <p className="mt-2 text-sm text-red-700">{errors.title}</p>
                                 }
@@ -58,6 +58,7 @@ export default function CreateArticle() {
                         </div>
                     </>
                 }
+                <h1 className="text-5xl font-semibold text-center py-10 shadow-lg">Write new article here!</h1>
                 <Editor
                     apiKey='5d3gmavobfl1gplfh7eithg9chuj3shiru72msgp1kescjzi'
                     init={{
@@ -68,7 +69,7 @@ export default function CreateArticle() {
                     onEditorChange={(newValue, editor) => setData('body', newValue)}
                 />
 
-                <div onClick={openModalEventHandler} className="hover:bg-gray-200 hover:cursor-pointer bg-white transition fixed right-3 bottom-5 rounded-full p-4 card-shadow">
+                <div onClick={openModalEventHandler} className="hover:bg-blue-900 hover:cursor-pointer bg-blue-700 text-white transition fixed right-3 mt-5 px-6 py-2 rounded-lg card-shadow">
                     Save
                 </div>
             </form>

@@ -29,7 +29,7 @@ export default function Navbar() {
     };
 
     return (
-        <nav className={`${scrollPassHero ? 'bg-white text-black shadow-md' : 'bg-transparent text-white'} font-jakartaSans transition z-30 px-5 py-4 items-center fixed top-0 w-full flex justify-between`}>
+        <nav className={`${scrollPassHero ? 'bg-slate-50 text-black shadow-lg' : 'bg-transparent text-white'} font-jakartaSans transition z-30 px-10 py-4 items-center fixed top-0 w-full flex justify-between`}>
             <a href="/" className="flex items-center">
                 <img src="/icon/logo-supertasko.svg" className="w-10" />
                 <h1 className="text-xl font-semibold ms-4">Super Tasko Aria</h1>
