@@ -18,8 +18,10 @@ class ArticleController extends Controller
 
     public function show(Article $article)
     {
+        $otherArticles = Article::inRandomOrder()->where('id', '!=', $article->id)->take(4)->get();
         return Inertia::render('ShowArticle', [
-            'article' => $article
+            'article' => $article,
+            'otherArticles' => $otherArticles
         ]);
     }
 

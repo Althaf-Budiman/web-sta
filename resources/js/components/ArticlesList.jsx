@@ -86,7 +86,7 @@ export function ArticleItem({ article }) {
                             </div>
 
                             <h2 className="text-2xl font-semibold">Edit Thumbnail "{article.title}"</h2>
-                            <img src={`./storage/thumbnail/${article.thumbnail}`} className="w-full my-5 h-52 border border-black rounded-xl"></img>
+                            <img src={`/storage/thumbnail/${article.thumbnail}`} className="w-full my-5 h-52 border border-black rounded-xl"></img>
 
                             <form onSubmit={onSubmitThumbnailChangeHandler} encType="multipart/form-data">
                                 <label htmlFor="thumbnail" className="mt-5 text-sm">Thumbnail:</label> <br />
@@ -108,7 +108,7 @@ export function ArticleItem({ article }) {
             <div className="relative">
                 <div className="rounded-lg transition border flex flex-col border-gray-300 p-4 w-72 h-60 hover:shadow-lg hover:-translate-y-1 duration-300">
                     <a href={`/articles/${article.id}`}>
-                    <img src={`./storage/thumbnail/${article.thumbnail}`} className="w-full h-32 border border-gray-400"></img>
+                    <img src={`/storage/thumbnail/${article.thumbnail}`} className="w-full h-32 border border-gray-400"></img>
                     </a>
                     <div className="flex flex-col justify-between mt-4 content-between">
                         <div className="flex flex-row justify-between mb-5">
