@@ -108,17 +108,18 @@ export function ArticleItem({ article }) {
             <div className="relative">
                 <div className="rounded-lg transition border flex flex-col border-gray-300 p-4 w-72 h-60 hover:shadow-lg hover:-translate-y-1 duration-300">
                     <a href={`/articles/${article.id}`}>
-                    <img src={`/storage/thumbnail/${article.thumbnail}`} className="w-full h-32 border border-gray-400"></img>
+                        <img src={`/storage/thumbnail/${article.thumbnail}`} className="w-full h-32 border border-gray-400"></img>
                     </a>
                     <div className="flex flex-col justify-between mt-4 content-between">
                         <div className="flex flex-row justify-between mb-5">
-                            <a href={`/articles/${article.id}`}>
-                                <h3 className="hover:underline font-semibold">{article.title}</h3>
+                            <a href={`/articles/${article.id}`} className="flex-1">
+                                <h3 className="hover:underline font-semibold max-h-[25px] max-w-[250px] overflow-hidden whitespace-nowrap overflow-ellipsis">{article.title}</h3>
                             </a>
                             <div>
                                 <a href={`/articles/${article.id}`}><img src="/icon/visit.svg" className="w-5" /></a>
                             </div>
                         </div>
+
                         <div className="flex flex-row justify-between">
                             <p className="text-sm">{dayjs(article.created_at).fromNow()}</p>
                             {inAdminPage &&
@@ -167,7 +168,7 @@ function ArticlesListHeader({ search, setSearch }) {
             <h2 className="text-2xl font-semibold">All Articles</h2>
             <div className="flex gap-5 ">
                 <div className="relative">
-                <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" className="focus:bg-white px-4 py-2 bg-gray-200 rounded-full pr-10 hover:transition hover:bg-gray-100" />
+                    <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" className="focus:bg-white px-4 py-2 bg-gray-200 rounded-full pr-10 hover:transition hover:bg-gray-100" />
                     <img src="/icon/search.svg" className="absolute right-3 top-1/2 transform -translate-y-1/2" />
                 </div>
             </div>

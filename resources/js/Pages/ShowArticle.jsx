@@ -11,8 +11,8 @@ export default function ShowArticle({ article, otherArticles }) {
     return (
         <>
             <Navbar />
-            <div className="flex md:flex-row flex-col">
-                <div className="mt-24 shadow-lg w-full rounded-xl mx-0 md:mx-28 p-5 h-fit border">
+            <div className="flex lg:flex-row flex-col">
+                <div className="mt-24 shadow-lg w-full rounded-xl mx-0 lg:mx-28 p-5 h-fit border">
                     <h1 className="text-5xl font-semibold text-center">{article.title}</h1>
                     <h1 className="text-sm font-light my-2">{formatDate(article.created_at)}
                         {article.created_at !== article.updated_at && (
