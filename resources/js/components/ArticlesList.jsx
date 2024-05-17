@@ -23,6 +23,11 @@ export default function ArticlesList({ articles }) {
 
 export function ArticleItem({ article }) {
 
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+    };
+
     const { data, setData, post, errors } = useForm({
         thumbnail: article.thumbnail,
         _method: 'patch'
@@ -113,7 +118,7 @@ export function ArticleItem({ article }) {
                     <div className="flex flex-col justify-between mt-4 content-between">
                         <div className="flex flex-row justify-between mb-5">
                             <a href={`/articles/${article.id}`} className="flex-1">
-                                <h3 className="hover:underline font-semibold max-h-[25px] max-w-[250px] overflow-hidden whitespace-nowrap overflow-ellipsis">{article.title}</h3>
+                                <h3 className="hover:underline font-semibold max-h-[25px] max-w-[235px] overflow-hidden whitespace-nowrap overflow-ellipsis">{article.title}</h3>
                             </a>
                             <div>
                                 <a href={`/articles/${article.id}`}><img src="/icon/visit.svg" className="w-5" /></a>
@@ -121,7 +126,7 @@ export function ArticleItem({ article }) {
                         </div>
 
                         <div className="flex flex-row justify-between">
-                            <p className="text-sm">{dayjs(article.created_at).fromNow()}</p>
+                            <p className="text-sm">{formatDate(article.created_at)} | {dayjs(article.created_at).fromNow()}</p>
                             {inAdminPage &&
                                 <>
                                     <div onClick={handleOptionsClick} className="hover:bg-gray-100 hover:cursor-pointer transition rounded-full p-2 relative">

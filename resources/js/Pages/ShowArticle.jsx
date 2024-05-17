@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import OtherArticlesSection from "../components/OtherArticlesSection";
+import ContactSection from "../components/ContactSection";
 
 export default function ShowArticle({ article, otherArticles }) {
     const formatDate = (dateString) => {
@@ -24,6 +25,7 @@ export default function ShowArticle({ article, otherArticles }) {
                 </div>
                 <OtherArticlesSection otherArticles={otherArticles} />
             </div>
+            <ContactSection />
         </>
     )
 }
